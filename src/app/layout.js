@@ -1,5 +1,13 @@
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
+import Navbar from "@/components/Navbar";
+import Providers from "@/contexts/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +19,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </Head>
+      <body className={inter.className} style={{ marginLeft: 254 }}>
+        <nav>
+          <Navbar />
+        </nav>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
